@@ -8,12 +8,12 @@ const handler = async (m, {command, usedPrefix, conn, text}) => {
 if (!text) throw `${mg}${mid.smsMalused4}\n*${usedPrefix + command} Alvaro Diaz - MAMI 100PRE SABE(INTERLUDE)*`
 try {
 if (command == 'play.1') {
-  conn.reply(m.chat, lenguajeGB['smsAvisoEG']() + mid.smsAud, m, { contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: wm, body: '😻 𝗦𝘂𝗽𝗲𝗿 𝗚𝗮𝘁𝗮𝗕𝗼𝘁-𝗠𝗗 - 𝗪𝗵𝗮𝘁𝘀𝗔𝗽𝗽', previewType: 0, thumbnail: gataImg, sourceUrl: accountsgb }}}) 
+  conn.reply(m.chat, lenguajeGB['smsAvisoEG']() + mid.smsAud, m, { contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, description: null, title: wm, body: wm, previewType: 0, thumbnail: gataImg, sourceUrl: accountsgb }}}) 
   try {
     const searches = await fetch('https://www.vanitas-api.online/search/youtube?text=' + text);
     searches = await searches.json();
 
-    const dataRE = await fetch(`https://www.vanitas-api.online/download/youtube-audio?url=${searches.response[0].url}`);
+    const dataRE = await fetch(`https://www.vanitas-api.online/download/ytmp3?url=${searches.response[0].url}`);
     const dataRET = await dataRE.json();
     
     const aa = await conn.sendMessage(m.chat, {audio: {url: dataRET.response.link }, fileName: `error.mp3`, mimetype: 'audio/mp4'}, {quoted: m});
@@ -32,7 +32,7 @@ if (command == 'play.1') {
         const searches = await fetch('https://www.vanitas-api.online/search/youtube?text=' + text);
         searches = await searches.json();
     
-        const dataRE = await fetch(`https://www.vanitas-api.online/download/youtube-video?url=${searches.response[0].url}`);
+        const dataRE = await fetch(`https://www.vanitas-api.online/download/ytmp4?url=${searches.response[0].url}`);
         const dataRET = await dataRE.json();
 
         const aa_2 = await conn.sendMessage(m.chat, {video: {url: dataRET.response.link }, fileName: `error.mp4`, caption: `${wm}`, thumbnail: mediaa.thumb, mimetype: 'video/mp4'}, {quoted: m});
